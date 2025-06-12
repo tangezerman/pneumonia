@@ -1,7 +1,7 @@
 import os
 import polars as pl
 
-def list_files_with_polars(directory, output_dir):
+def list_files_with_polars(directory):
     test_files = []
     train_files = []
 
@@ -21,13 +21,43 @@ def list_files_with_polars(directory, output_dir):
     train_df = pl.DataFrame(train_files)
 
     # Ensure output directory exists
-    os.makedirs(output_dir, exist_ok=True)
+    
 
-    # Write to CSV
-    test_df.write_csv(os.path.join(output_dir, "test.csv"))
-    train_df.write_csv(os.path.join(output_dir, "train.csv"))
+    # Write to CS
+    test_df.write_csv("test.csv")
+    train_df.write_csv("train.csv")
 
     return test_df, train_df
 
 
-test_df, train_df = list_files_with_polars("chest_xray", "output_csvs")
+
+
+def combine_df(df1_path, df2_path):
+    df1 = pl.read_csv(df1_path)
+    df2 = pl.read_csv(df2_path)
+    
+    # Get the maximum length to pad shorter column with None
+    max_len = max(len(df1), len(df2))
+    
+    # Create padded series
+    test_series = df1["file_path"].to_list()
+    train_series = df2["file_path"].to_list()
+    
+    # Pad with None values to match max length
+    test_series.extend([None] * (max_len - len(test_series)))
+    train_series.extend([None] * (max_len - len(train_series)))
+    
+    # Create new dataframe with both columns
+    test_padded = pl.DataFrame({"test": test_series})
+    train_padded = pl.DataFrame({"train": train_series})
+    
+    # Combine the columns horizontally
+    combined_df = pl.concat([train_padded, test_padded], how="horizontal")
+    
+    # Write to CSV
+    combined_df.write_csv("dataset.csv")
+
+
+test_df, train_df = list_files_with_polars("chest_xray")
+
+combine_df("test.csv","train.csv")

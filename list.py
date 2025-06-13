@@ -53,6 +53,8 @@ def combine_df(df1_path, df2_path):
     
     # Combine the columns horizontally
     combined_df = pl.concat([train_padded, test_padded], how="horizontal")
+
+    combined_df = combined_df.slice(1) #remove dsstore
     
     # Write to CSV
     combined_df.write_csv("dataset.csv")

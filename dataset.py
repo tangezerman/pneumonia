@@ -1,6 +1,6 @@
 import torch
 from torchvision import transforms
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, DataLoader
 from typing import Tuple 
 from PIL import Image
 import polars as pl
@@ -38,3 +38,12 @@ class PneumoniaDataset(Dataset):
     
     def __len__(self) -> int:
         return len(self.df)
+
+if __name__ == "__main__":
+    dataset = PneumoniaDataset("dataset.csv","train")
+    dataloader = DataLoader(dataset, batch_size=4,shuffle=True, num_workers=2)
+
+    dataiter = iter(dataloader)
+    data = next(dataiter)
+    tensor, label, path = data
+    print(tensor, label , path)

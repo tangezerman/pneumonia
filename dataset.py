@@ -27,7 +27,11 @@ class PneumoniaDataset(Dataset):
     def __getitem__(self, index: int) -> Tuple[torch.Tensor, str, str]:
         path = self.df[index,self.column ]
         image = Image.open(path)
-        tensor = transforms.ToTensor()(image)
+        transform = transforms.Compose([
+        transforms.Resize((1024, 1024)),
+        transforms.ToTensor()
+        ])
+        tensor = transform(image)
         label = "PNEUMONIA" if "PNEUMONIA" in path else "NORMAL"
 
         return tensor, label, path

@@ -28,7 +28,15 @@ class PneumoniaDataset(Dataset):
             [transforms.Resize((1024, 1024)), transforms.ToTensor()]
         )
         tensor = transform(image)
-        label = "PNEUMONIA" if "PNEUMONIA" in path else "NORMAL"
+        if "pneumonia" in path.lower():
+            if "bacteria" in path.lower():
+                label = "bacteria"
+            elif "virus" in path.lower():
+                label = "virus"
+            else: 
+                raise ValueError((f"Unknown pneumonia type in path: {path}"))
+        else:
+            label = "normal"
 
         return tensor, label, path
 

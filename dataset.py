@@ -25,7 +25,11 @@ class PneumoniaDataset(Dataset):
         path = self.df[index, self.column]
         image = Image.open(path)
         transform = transforms.Compose(
-            [transforms.Resize((1024, 1024)), transforms.ToTensor()]
+            [
+                transforms.Resize((1024, 1024)),
+                transforms.Grayscale(num_output_channels=1),
+                transforms.ToTensor(),
+            ]
         )
         tensor = transform(image)
         if "pneumonia" in path.lower():
@@ -33,7 +37,7 @@ class PneumoniaDataset(Dataset):
                 label = "bacteria"
             elif "virus" in path.lower():
                 label = "virus"
-            else: 
+            else:
                 raise ValueError((f"Unknown pneumonia type in path: {path}"))
         else:
             label = "normal"

@@ -9,8 +9,8 @@ import polars as pl
 class PneumoniaDataset(Dataset):
     def __init__(self, csv: str, mode: str):
         self.df = pl.read_csv(csv)
-        self.testdf = self.df.select("test")
-        self.traindf = self.df.select("train")
+        self.testdf = self.df.select("test").to_series().drop_nulls().to_list()
+        self.traindf = self.df.select("train").to_series().drop_nulls().to_list()
         self.mode = mode
         if mode == "train":
             self.df = self.traindf
@@ -50,7 +50,7 @@ class PneumoniaDataset(Dataset):
 
 if __name__ == "__main__":
     dataset = PneumoniaDataset("dataset.csv", "train")
-    dataloader = DataLoader(dataset, batch_size=4, shuffle=True, num_workers=2)
+    dataloader = DataLoader(dataset, batch_size=4, shuffle=True, num_workers=4)
 
     dataiter = iter(dataloader)
     data = next(dataiter)

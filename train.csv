@@ -1,5 +1,4 @@
 file_path
-chest_xray\train\.DS_Store
 chest_xray\train\NORMAL\IM-0115-0001.jpeg
 chest_xray\train\NORMAL\IM-0117-0001.jpeg
 chest_xray\train\NORMAL\IM-0119-0001.jpeg
@@ -1341,15 +1340,6 @@ chest_xray\train\NORMAL\NORMAL2-IM-1412-0001.jpeg
 chest_xray\train\NORMAL\NORMAL2-IM-1419-0001.jpeg
 chest_xray\train\NORMAL\NORMAL2-IM-1422-0001.jpeg
 chest_xray\train\NORMAL\NORMAL2-IM-1423-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1427-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1430-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1431-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1436-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1437-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1438-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1440-0001.jpeg
-chest_xray\train\NORMAL\NORMAL2-IM-1442-0001.jpeg
-chest_xray\train\PNEUMONIA\.DS_Store
 chest_xray\train\PNEUMONIA\person1000_bacteria_2931.jpeg
 chest_xray\train\PNEUMONIA\person1000_virus_1681.jpeg
 chest_xray\train\PNEUMONIA\person1001_bacteria_2932.jpeg
@@ -2970,14 +2960,6 @@ chest_xray\train\PNEUMONIA\person1942_bacteria_4865.jpeg
 chest_xray\train\PNEUMONIA\person1943_bacteria_4868.jpeg
 chest_xray\train\PNEUMONIA\person1944_bacteria_4869.jpeg
 chest_xray\train\PNEUMONIA\person1945_bacteria_4872.jpeg
-chest_xray\train\PNEUMONIA\person1946_bacteria_4874.jpeg
-chest_xray\train\PNEUMONIA\person1946_bacteria_4875.jpeg
-chest_xray\train\PNEUMONIA\person1947_bacteria_4876.jpeg
-chest_xray\train\PNEUMONIA\person1949_bacteria_4880.jpeg
-chest_xray\train\PNEUMONIA\person1950_bacteria_4881.jpeg
-chest_xray\train\PNEUMONIA\person1951_bacteria_4882.jpeg
-chest_xray\train\PNEUMONIA\person1952_bacteria_4883.jpeg
-chest_xray\train\PNEUMONIA\person1954_bacteria_4886.jpeg
 chest_xray\train\PNEUMONIA\person19_bacteria_58.jpeg
 chest_xray\train\PNEUMONIA\person19_bacteria_59.jpeg
 chest_xray\train\PNEUMONIA\person19_bacteria_60.jpeg

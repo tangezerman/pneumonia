@@ -17,6 +17,9 @@ class PneumoniaDataset(Dataset):
         elif mode == "test":
             self.data = self.df.select("test").to_series().drop_nulls().to_list()
 
+        elif mode =="val":
+            self.data = self.df.select("val").to_series().drop_nulls().to_list()
+
         else:
             print("mode not set")
 
@@ -29,12 +32,15 @@ class PneumoniaDataset(Dataset):
         elif self.mode == "test":
             path = self.data[index]
             
+        elif self.mode =="val":
+            path = self.data[index]
+
         else:
             print("mode not set - getitem()")
         image = Image.open(path)
         transform = transforms.Compose(
             [
-                transforms.Resize((1024, 1024)),
+                transforms.Resize((224, 224)),
                 transforms.Grayscale(num_output_channels=1),
                 transforms.ToTensor(),
             ]
@@ -59,7 +65,7 @@ class PneumoniaDataset(Dataset):
 
 
 if __name__ == "__main__":
-    dataset = PneumoniaDataset("dataset.csv", "train")
+    dataset = PneumoniaDataset("dataset.csv", "val")
     dataloader = DataLoader(dataset, batch_size=4, shuffle=True, num_workers=4)
 
     dataiter = iter(dataloader)
